@@ -1,0 +1,43 @@
+<style>
+  #Element-to-be-animated {
+    margin-left: -20vw;
+    z-index: 2;
+    opacity: 0;
+  }
+  .slide-in-from-left-animation {
+    animation-name: slider;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+  }
+
+  @keyframes slider {
+    0% {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(25vw);
+      opacity: 1;
+    }
+  }
+</style>
+<script>
+  window.addEventListener("DOMContentLoaded", (event) => {
+    window.onscroll = () => {
+      if (
+        document
+          .getElementById("Element-to-trigger-animation-for-coming-into-view")
+          .getBoundingClientRect().top < 0
+      ) {
+        document
+          .getElementById("Element-to-be-animated")
+          .classList.add("slide-in-from-left-animation");
+      }
+    };
+  });
+</script>
